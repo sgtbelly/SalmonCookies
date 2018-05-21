@@ -1,35 +1,109 @@
 'use strict';
 
-//these are notes for your co-working session to help you get started
-//consider using math.random(); look that up in MDN
+// these are notes for your co-working session to help you get started
+// consider using math.random(); look that up in MDN
 
-var pike = {
+// Pike Place Market Shop 
+var pikePlace = {
   min: 3,
   max: 9,
   avg: 6.1,
-  getRandom: function(min, max) {
-      return Math.random() * (max-min) + min;
+  getRandom: function (min, max) {
+    return Math.random() * (max - min) + min;
   }
-}
+};console.log
+pikePlace.getRandom(pikePlace.min, pikePlace.max);
+var listPikePlace = function (pikePlace) {
+  for (var prop in pikePlace) {
+    var elListPikePlace = document.getElementById('').sales.html = prop;
+  }
+};function pikePlace_table(pikePlace) {
+  // get the reference for the body
+  var bodyPikePlace = document.getElementsByTagName("pikePlace")[0];
+pikePlace_table();
+  console.log(pikePlace);
 
-pikePlace.getRandom(pikePlace.min, pikePlace.max)
 
-//1.) Create one object literal that will aggregate data, generate for each hour a number of cookies that need to be baked.
-//2.) Once you have that data you will populate your DOM dynamically
-//3.) With that data you'll create an unordered list.
-//4.) You'll write a final method on the object literal called render and that will populate your data in the browser with DOM manipulation.
-//5.) document.createElement(''); it takes a string argument that is the element that we want to create 
+// SeaTac Shop
+var seaTac = {
+  min: 3,
+  max: 24,
+  avg: 6.1,
+  getRandom: function (min, max) {
+    return Math.random() * (max - min) + min;
+  }
+};
+seaTac.getRandom(seaTac.min, seaTac.max);
+var listSeaTac = function (SeaTac) {
+  for (var prop in SeaTac) {
+    var elListSeaTac = document.getElementById('seaTac').innerHTML = prop;
+  }
+};
+
+// Seattle Center Shop
+var seaCen = {
+  min: 11,
+  max: 38,
+  avg: 3.7,
+  getRandom: function (min, max) {
+    return Math.random() * (max - min) + min;
+  }
+};
+seaCen.getRandom(seaCen.min, seaCen.max);
+var listSeaCen = function (seaCen) {
+  for (var prop in seaCen) {
+    var elListSeaCen = document.getElementById('seaCen').innerHTML = prop;
+  }
+};
+
+// Capital Hill Shop
+var capHill = {
+  min: 20,
+  max: 38,
+  avg: 2.3,
+  getRandom: function (min, max) {
+    return Math.random() * (max - min) + min;
+  }
+};
+capHill.getRandom(capHill.min, capHill.max);
+var listCapHill = function (capHill) {
+  for (var prop in capHill) {
+    var elListCapHill = document.getElementById('capHill').innerHTML = prop;
+  }
+};
+
+// ALKI SHOP
+var alki = {
+  min: 2,
+  max: 16,
+  avg: 4.6,
+  getRandom: function (min, max) {
+    return Math.random() * (max - min) + min;
+  }
+};
+alki.getRandom(alki.min, alki.max);
+var listAlki = function (alki) {
+  for (var prop in alki) {
+    var elListAlki = document.getElementById('alki').innerHTML = prop;
+  }
+};
+
+// 1.) Create one object literal that will aggregate data, generate for each hour a number of cookies that need to be baked.
+// 2.) Once you have that data you will populate your DOM dynamically
+// 3.) With that data you'll create an unordered list.
+// 4.) You'll write a final method on the object literal called render and that will populate your data in the browser with DOM manipulation.
+// 5.) document.createElement(''); it takes a string argument that is the element that we want to create 
 
 // example 
 // var h1El = document.createElement('h1') creates an element with js but havent' attached it to the browser
-//latch onto any id name
+// latch onto any id name
 
 // DOM Interactions
 // These are the most used and common methods for interacting with the DOM:
 //     Getters: // Document or element methods:
-//     document.getElementById(); //returns a single element;
-// document.getElementsByClassName(); //returns an array of elements with same class;
-// document.getElementsByTagName(); //returns an array of elements by tag;
+//     document.getElementById() //returns a single element
+// document.getElementsByClassName() //returns an array of elements with same class
+// document.getElementsByTagName() //returns an array of elements by tag
 // document.querySelectorAll(some css shiz) //returns an array of element nodes.
 // Elements:
 // document.createElement('div') //returns a new 'div' element with the provided string.
