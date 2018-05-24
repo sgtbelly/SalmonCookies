@@ -2,12 +2,42 @@
 
 // these are notes for your co-working session to help you get started
 // consider using math.random(); look that up in MDN
+// Hours
+var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 
+//Create Object literals for all locations
 // Pike Place Market Shop
+
 var pikePlace = {
-  min: 3,
-  max: 9,
-  avg: 6.1,
+  minCustPerHour: 3,
+  maxCustPerHour: 9,
+  avgCookiesSoldByHour: 6.1,
+  randCustByHour: [],
+  cookiesSoldByHour: [],
+  totalCookies: 0,
+  //method for random customers by hour
+  CalcRandCustByHour: function() {
+    for(var i = 0; i < hours.length; i++) {
+      this.randCustByHour.push(Math.floor(math.random() * (this.maxCustPerHour - this.minCustPerHour + 1)) + this.minCustPerHour);
+      console.log(this.randCustByHour[i]);
+    }
+  },
+  //method for cookies sold by hour
+  calcCookiesSoldByHour: function() {
+    for(var j = 0; j < hours.length; j++) {
+      this.cookiesSoldByHour.push(math.round(this.avgCookiesSoldPerHour * this.randCustByHour[j]));
+      console.log(this.cookiesSoldByHour[j]);
+    }
+  },
+  render: function() {
+    //getters and setters!
+    var pikePlace = document.getElementById('pikePlace');
+    var pPlace = document.getElementById('pPlace');
+    //calling the methods in the object literal
+    this.randCustByHour();
+    this.calcCookiesSoldByHour();
+    var h3El = document.createElement('h3');
+  }
   getRandom: function (min, max) {
     return Math.random() * (max - min) + min;
   }
