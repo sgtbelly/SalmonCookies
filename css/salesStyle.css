@@ -1,9 +1,4 @@
-/* * {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  background-color: salmon;
+* {
 }
 
 h1 {
@@ -13,4 +8,20 @@ h1 {
 html, body {
   height: 100%;
   text-align: left
-} */
+}
+
+form {
+
+}
+
+table {
+  border:solid black 2px;
+  background-color: bisque; 
+}
+tr:nth-child(even){
+  background: rosybrown;
+}
+
+tr:nth-child(odd) {
+  background: burlywood;
+}
