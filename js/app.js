@@ -27,8 +27,8 @@ var pikePlace = {
     }
   },
   // method for total cookies
-  calcTotalCookies: function() {
-    for(var total = 0; total < hours.length; total++) {
+  calcTotalCookies: function () {
+    for (var total = 0; total < hours.length; total++) {
       this.totalCookies = (this.totalCookies + this.cookiesSoldByHour[total]);
       console.log(this.totalCookies);
     }
@@ -87,8 +87,8 @@ var SeaTac = {
     }
   },
   // method for total cookies
-  calcTotalCookies: function() {
-    for(var total = 0; total < hours.length; total++) {
+  calcTotalCookies: function () {
+    for (var total = 0; total < hours.length; total++) {
       this.totalCookies = (this.totalCookies + this.cookiesSoldByHour[total]);
       console.log(this.totalCookies);
     }
@@ -110,7 +110,7 @@ var SeaTac = {
       //creating li elements with text of the hours
       liEl.textContent = hours[k] + ': ' + this.cookiesSoldByHour[k] + ' cookies';
       console.log(liEl);
-      SeTac.appendChild(liEl);      
+      SeTac.appendChild(liEl);
     }
     var totEl = document.createElement('li');
     totEl.textContent = 'Total :' + this.totalCookies;
@@ -145,8 +145,8 @@ var SeaCen = {
     }
   },
   // method for total cookies
-  calcTotalCookies: function() {
-    for(var total = 0; total < hours.length; total++) {
+  calcTotalCookies: function () {
+    for (var total = 0; total < hours.length; total++) {
       this.totalCookies = (this.totalCookies + this.cookiesSoldByHour[total]);
       console.log(this.totalCookies);
     }
@@ -204,8 +204,8 @@ var CapHill = {
     }
   },
   // method for total cookies
-  calcTotalCookies: function() {
-    for(var total = 0; total < hours.length; total++) {
+  calcTotalCookies: function () {
+    for (var total = 0; total < hours.length; total++) {
       this.totalCookies = (this.totalCookies + this.cookiesSoldByHour[total]);
       console.log(this.totalCookies);
     }
@@ -263,8 +263,8 @@ var Alkai = {
     }
   },
   // method for total cookies
-  calcTotalCookies: function() {
-    for(var total = 0; total < hours.length; total++) {
+  calcTotalCookies: function () {
+    for (var total = 0; total < hours.length; total++) {
       this.totalCookies = (this.totalCookies + this.cookiesSoldByHour[total]);
       console.log(this.totalCookies);
     }
