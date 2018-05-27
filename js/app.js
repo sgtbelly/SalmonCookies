@@ -104,17 +104,23 @@ function tblFooter() {
   var trEl = document.createElement('tr');
   var tdEl = document.createElement('td');
   trEl.textContent = 'Total';
-  // for (var m = 0; m < hours.length; m++) {
-  //   alllocations[m].calcTotalCookies();
-  //   tdEl = document.createElement('td');
-  //   tdEl.textContent = alllocations[m].totalCookies[m];
-  //   trEl.appendChild(tdEl);
-  // }
+  for (var m = 0; m < hours.length; m++) {
+    alllocations[m].calcTotalCookies();
+    tdEl = document.createElement('td');
+    tdEl.textContent = alllocations[m].totalCookies[m];
+    trEl.appendChild(tdEl);
+  }
   cookieShops.appendChild(trEl);
 }
 headerRow();
 tblBody();
 tblFooter();
+
+function form() {
+  
+
+}
+
 console.log(headerRow);
 console.log(tblBody);
 // //making the data
