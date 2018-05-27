@@ -116,9 +116,10 @@ headerRow();
 tblBody();
 tblFooter();
 //form
-var newStoreForm = document.getElementById('store-form');
 
 function newStoreform(event) {
+  var newStoreForm = document.getElementById('store-form');
+  var submit = document.getElementById('submit');
   event.preventDefault();
   var MakeLocation = [];
 
@@ -138,7 +139,7 @@ function newStoreform(event) {
   event.target.maxcust.value = null;
   event.target.avgcook.value = null;
 
-  
+
 }
 newStoreform();
 
