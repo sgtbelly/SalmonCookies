@@ -1,6 +1,5 @@
-/* reset */
+/* reset 
 * {
-  width: 100%;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -8,9 +7,10 @@
 }
 
 h1 {
-  text-align: center
+  text-align:
   
 }
 html, body {
   height: 100%;
 }
+*/
