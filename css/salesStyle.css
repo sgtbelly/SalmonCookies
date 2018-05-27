@@ -1,9 +1,35 @@
 * {
-  background-color: salmon;
+
+
+
+
 }
 
 h1 {
   text-align: center
   
 }
+
+html, body {
+  height: 100%;
+  text-align: left
+}
+
+form {
+
+}
+
+table {
+  border:solid black 2px;
+  background-color: bisque; 
+}
+tr:nth-child(even){
+  background: rosybrown;
+}
+
+tr:nth-child(odd) {
+  background: burlywood;
+}
+
+
 

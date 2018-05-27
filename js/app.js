@@ -104,16 +104,48 @@ function tblFooter() {
   var trEl = document.createElement('tr');
   var tdEl = document.createElement('td');
   trEl.textContent = 'Total';
-  // for (var m = 0; m < hours.length; m++) {
-  //   alllocations[m].calcTotalCookies();
-  //   tdEl = document.createElement('td');
-  //   tdEl.textContent = alllocations[m].totalCookies[m];
-  //   trEl.appendChild(tdEl);
-  // }
+  for (var m = 0; m < hours.length; m++) {
+    alllocations[m].calcTotalCookies();
+    tdEl = document.createElement('td');
+    tdEl.textContent = alllocations[m].totalCookies[m];
+    trEl.appendChild(tdEl);
+  }
   cookieShops.appendChild(trEl);
 }
 headerRow();
 tblBody();
 tblFooter();
+form
+//form
+var newStoreForm = document.getElementById('store-form');
+
+function newStoreform(event) {
+  event.preventDefault();
+  var MakeLocation = [];
+
+  if (!event.target.storename.value || !event.target.mincust.value || !event.target.maxcust.value || !event.target.avgcook.value) {
+    return alert('fields cannot be empty!');
+  }
+
+  var newStoreName = event.target.storename.value;
+  var newStoreMinCust = parseInt(event.target.mincust.value);
+  var newStoreMaxCust =  parseInt(event.target.maxcust.value);
+  var newStoreAvgCook = parseInt(event.target.avgcook.value);
+
+  new MakeLocation(newStoreName, newStoreMinCust, newStoreMaxCust, newStoreAvgCook);
+
+  event.target.storename.value = null;
+  event.target.mincust.value = null;
+  event.target.maxcust.value = null;
+  event.target.avgcook.value = null;
+
+  
+}
+newStoreform();
+
+
+newStoreform.addEventListener('submit', newStoreform);
+
 console.log(headerRow);
 console.log(tblBody);
+
