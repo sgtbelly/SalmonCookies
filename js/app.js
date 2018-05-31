@@ -16,9 +16,10 @@ function MakeShop(name, minCustPerHour, maxCustPerHour, avgCookiesSoldPerHour) {
   this.cookiesSoldByHour = [];
   this.totalCookies = 0;
   alllocations.push(this);
+  console.log(this);
 }
-console.log(MakeShop);
-console.log(alllocations);
+
+
 
 // New Locations
 
@@ -80,14 +81,14 @@ function tblBody() {
     var trEl = document.createElement('tr');
     tdEl = document.createElement('td');
     tdEl.textContent = alllocations[j].name;
-    console.log(alllocations[j]);
+    // console.log(alllocations[j]);
     trEl.appendChild(tdEl);
     alllocations[j].calcRandCustByHour();
     alllocations[j].calcCookiesSoldByHour();
     alllocations[j].calcTotalCookies();
     for (var k = 0; k < hours.length; k++) {
       tdEl = document.createElement('td');
-      console.log(alllocations[j]);
+      // console.log(alllocations[j]);
       tdEl.textContent = alllocations[j].cookiesSoldByHour[k];
       trEl.appendChild(tdEl);
     }
@@ -99,50 +100,63 @@ function tblBody() {
   }
 }
 
-function tblFooter() {
-  var cookieShops = document.getElementById('cookieShops');
-  var trEl = document.createElement('tr');
-  var tdEl = document.createElement('td');
-  trEl.textContent = 'Total';
-  for (var m = 0; m < hours.length; m++) {
-    alllocations[m].calcTotalCookies();
-    tdEl = document.createElement('td');
-    tdEl.textContent = alllocations[m].totalCookies[m];
-    trEl.appendChild(tdEl);
-  }
-  cookieShops.appendChild(trEl);
-}
+// function tblFooter() {
+//   var cookieShops = document.getElementById('cookieShops');
+//   var trEl = document.createElement('tr');
+//   var tdEl = document.createElement('td');
+//   trEl.textContent = 'Total';
+//   for (var m = 0; m < hours.length; m++) {
+//     alllocations[m].calcTotalCookies();
+//     tdEl = document.createElement('td');
+//     tdEl.textContent = alllocations[m].totalCookies[m];
+//     trEl.appendChild(tdEl);
+//   }
+//   cookieShops.appendChild(trEl);
+// }
 headerRow();
 tblBody();
-tblFooter();
+// tblFooter();
 //form
 
-function newStoreform(event) {
-  var newStoreForm = document.getElementById('store-form');
-  var submit = document.getElementById('submit');
-  event.preventDefault();
-  var MakeLocation = [];
+function useFormHandler(event) {
+  event.preventdefault();
+  var storeForm = document.getElementById('store-form');
+  var newStoreName = storeForm.newStoreName.value;
+  var newStoreMinCust = parseInt(storeForm.mincust.value);
+  var newStoreMaxCust =  parseInt(storeForm.maxcust.value);
+  var newStoreAvgCook = parseFloat(storeForm.avgcook.value);
 
-  if (!event.target.storename.value || !event.target.mincust.value || !event.target.maxcust.value || !event.target.avgcook.value) {
+  if (!newStoreName || !newStoreMinCust || !newStoreMaxCust || !newStoreAvgCook) {
     return alert('fields cannot be empty!');
   }
+  new MakeShop(newStoreName, newStoreMinCust, newStoreMaxCust, newStoreAvgCook);
 
-  var newStoreName = event.target.storename.value;
-  var newStoreMinCust = parseInt(event.target.mincust.value);
-  var newStoreMaxCust =  parseInt(event.target.maxcust.value);
-  var newStoreAvgCook = parseInt(event.target.avgcook.value);
+  var tdEl = document.createElement('td');
+  for (var m = 0; m < alllocations.length; m++) {
+    var trEl = document.createElement('tr');
+    tdEl = document.createElement('td');
+    tdEl.textContent = alllocations[m].name;
+    console.log(MakeShop[m]);
+    trEl.appendChild(tdEl);
+    for (var n = 0; n < hours.length; n++) {
+      tdEl = document.createElement('td');
+      console.log(MakeShop[m]);
+      tdEl.textContent = alllocations[m];
+      trEl.appendChild(tdEl);
+    }
+  }
+  console.log(MakeShop);
 
-  new MakeLocation(newStoreName, newStoreMinCust, newStoreMaxCust, newStoreAvgCook);
 
-  event.target.storename.value = null;
-  event.target.mincust.value = null;
-  event.target.maxcust.value = null;
-  event.target.avgcook.value = null;
+  storeForm.storename.value = null;
+  storeForm.mincust.value = null;
+  storeForm.maxcust.value = null;
+  storeForm.avgcook.value = null;
 
-
+  console.log(newStoreName, newStoreMinCust, newStoreMaxCust, newStoreAvgCook);
 }
-newStoreform();
+var submitButton = document.getElementById('submitButton').addEventListener('click', useFormHandler);
+submitButton;
 
-console.log(headerRow);
-console.log(tblBody);
-newStoreform.addEventListener('submit', newStoreform);
+// console.log(headerRow);
+// console.log(tblBody);
