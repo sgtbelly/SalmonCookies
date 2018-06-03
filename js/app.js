@@ -114,7 +114,9 @@ function tblFooter () {
 headerRow();
 tblBody();
 tblFooter();
-// form
+
+//form
+var newStoreForm = document.getElementById('store-form');
 
 function form (event) {
   var storeform = document.getElementById('storeform');
@@ -146,5 +148,9 @@ function form (event) {
 
 form.addEventListener('submit', form);
 
+
+newStoreForm.addEventListener('submit', newStoreForm);
+
 console.log(headerRow);
 console.log(tblBody);
+
