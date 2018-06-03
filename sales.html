@@ -3,29 +3,30 @@
     <head>
         <title>Salmon Cookie Shops</title>
         <link rel="stylesheet" href="css/salesStyle.css">
+        <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
     </head>
     <body>
         <h1>Salmon Cookie Shops</h1>
         <h1>Sales Page</h1>
         <br>
         <div>
-            <form id="store-form">
+            <form id="storeForm">
                 <fieldset>
                     <legend>Add Store Location</legend>
                     
-                    <label for="storename">Name of Location</label>
-                    <input name="storename" type="text" size="45"/>
+                    <label for="name">Name of Location</label>
+                    <input id="name" name="name" type="text" size="45"/>
                     
-                    <label for="mincust">Min Cust Per Hour</label>
-                    <input name="mincust" type="text"/>
+                    <label for="minCustPerHour">Min Cust Per Hour</label>
+                    <input id="minCustPerHour" name="minCustPerHour" type="text"/>
                     
-                    <label for="maxcust">Max Cust Per Hour</label>
-                    <input name="maxcust" type="text"/>
+                    <label for="maxCustPerHour">Max Cust Per Hour</label>
+                    <input id="maxCustPerHour" name="maxCustPerHour" type="text"/>
                     
-                    <label for="avgcook">Avg Cookies per Sale</label>
-                    <input name="avgcook" type="text"/>
+                    <label for="avgCookiesSoldPerHour">Avg Cookies per Sale</label>
+                    <input id="avgCookiesSoldPerHour" name="avgCookiesSoldPerHour" type="text"/>
                     
-                    <button id="submitButton" onclick="submit">Create A New Store</button>
+                    <button id="submit" type="submit">Create A New Store</button>
                 </fieldset>
             </form>
         </div>

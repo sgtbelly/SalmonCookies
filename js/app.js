@@ -3,11 +3,11 @@
 
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 var alllocations = [];
-// var netTotal = 0;
+// var netTotal = 0
 
 // Create Object Constructors
 
-function MakeShop(name, minCustPerHour, maxCustPerHour, avgCookiesSoldPerHour) {
+function MakeShop (name, minCustPerHour, maxCustPerHour, avgCookiesSoldPerHour) {
   this.name = name;
   this.minCustPerHour = minCustPerHour;
   this.maxCustPerHour = maxCustPerHour;
@@ -16,15 +16,13 @@ function MakeShop(name, minCustPerHour, maxCustPerHour, avgCookiesSoldPerHour) {
   this.cookiesSoldByHour = [];
   this.totalCookies = 0;
   alllocations.push(this);
-  console.log(this);
 }
-
-
+console.log(MakeShop);
+console.log(alllocations);
 
 // New Locations
 
-function createShops() {
-
+function createShops () {
   new MakeShop('First and Pike', 23, 65, 6.3);
   new MakeShop('Seatac Airport', 3, 24, 1.2);
   new MakeShop('Seattle Center', 11, 38, 3.7);
@@ -33,7 +31,7 @@ function createShops() {
 }
 console.log(createShops);
 createShops();
-//Table Data
+// Table Data
 // method for random customers by hour
 MakeShop.prototype.calcRandCustByHour = function () {
   for (var i = 0; i < hours.length; i++) {
@@ -57,7 +55,7 @@ MakeShop.prototype.calcTotalCookies = function () {
 };
 // making the table
 // making the header
-function headerRow() {
+function headerRow () {
   var cookieShops = document.getElementById('cookieShops');
   var trEl = document.createElement('tr');
   var thEl = document.createElement('th');
@@ -74,21 +72,21 @@ function headerRow() {
   cookieShops.appendChild(trEl);
 }
 
-function tblBody() {
+function tblBody () {
   var cookieShops = document.getElementById('cookieShops');
   var tdEl = document.createElement('td');
   for (var j = 0; j < alllocations.length; j++) {
     var trEl = document.createElement('tr');
     tdEl = document.createElement('td');
     tdEl.textContent = alllocations[j].name;
-    // console.log(alllocations[j]);
+    console.log(alllocations[j]);
     trEl.appendChild(tdEl);
     alllocations[j].calcRandCustByHour();
     alllocations[j].calcCookiesSoldByHour();
     alllocations[j].calcTotalCookies();
     for (var k = 0; k < hours.length; k++) {
       tdEl = document.createElement('td');
-      // console.log(alllocations[j]);
+      console.log(alllocations[j]);
       tdEl.textContent = alllocations[j].cookiesSoldByHour[k];
       trEl.appendChild(tdEl);
     }
@@ -100,63 +98,53 @@ function tblBody() {
   }
 }
 
-// function tblFooter() {
-//   var cookieShops = document.getElementById('cookieShops');
-//   var trEl = document.createElement('tr');
-//   var tdEl = document.createElement('td');
-//   trEl.textContent = 'Total';
-//   for (var m = 0; m < hours.length; m++) {
-//     alllocations[m].calcTotalCookies();
-//     tdEl = document.createElement('td');
-//     tdEl.textContent = alllocations[m].totalCookies[m];
-//     trEl.appendChild(tdEl);
-//   }
-//   cookieShops.appendChild(trEl);
-// }
+function tblFooter () {
+  var cookieShops = document.getElementById('cookieShops');
+  var trEl = document.createElement('tr');
+  var tdEl = document.createElement('td');
+  trEl.textContent = 'Total';
+  for (var m = 0; m < hours.length; m++) {
+    alllocations[m].calcTotalCookies[m];
+    tdEl = document.createElement('td');
+    tdEl.textContent = alllocations[m].totalCookies[m];
+    trEl.appendChild(tdEl);
+  }
+  cookieShops.appendChild(trEl);
+}
 headerRow();
 tblBody();
-// tblFooter();
-//form
+tblFooter();
+// form
 
-function useFormHandler(event) {
-  event.preventdefault();
-  var storeForm = document.getElementById('store-form');
-  var newStoreName = storeForm.newStoreName.value;
-  var newStoreMinCust = parseInt(storeForm.mincust.value);
-  var newStoreMaxCust =  parseInt(storeForm.maxcust.value);
-  var newStoreAvgCook = parseFloat(storeForm.avgcook.value);
+function form (event) {
+  var storeform = document.getElementById('storeform');
+  event.preventDefault();
+  // add negstive input rules later :)
 
-  if (!newStoreName || !newStoreMinCust || !newStoreMaxCust || !newStoreAvgCook) {
-    return alert('fields cannot be empty!');
-  }
-  new MakeShop(newStoreName, newStoreMinCust, newStoreMaxCust, newStoreAvgCook);
+  console.log(event);
+  // key value pairs need match to constructor function key value
+  // you are creating a new instance by using 'new' of your constructor function
+  var newName = event.target.name.value;
+  var newMinCustPerHour = Number(event.target.minCustPerHour.value);
+  var newMaxCustPerHour = Number(event.target.maxCustPerHour.value);
+  var newAvgCookiesSoldPerHour = Number(event.target.avgCookiesSoldPerHour.value);
 
-  var tdEl = document.createElement('td');
-  for (var m = 0; m < alllocations.length; m++) {
-    var trEl = document.createElement('tr');
-    tdEl = document.createElement('td');
-    tdEl.textContent = alllocations[m].name;
-    console.log(MakeShop[m]);
-    trEl.appendChild(tdEl);
-    for (var n = 0; n < hours.length; n++) {
-      tdEl = document.createElement('td');
-      console.log(MakeShop[m]);
-      tdEl.textContent = alllocations[m];
-      trEl.appendChild(tdEl);
-    }
-  }
-  console.log(MakeShop);
+  new MakeShop(newName, newMinCustPerHour, newMaxCustPerHour, newAvgCookiesSoldPerHour);
 
 
-  storeForm.storename.value = null;
-  storeForm.mincust.value = null;
-  storeForm.maxcust.value = null;
-  storeForm.avgcook.value = null;
+  headerRow();
+  tblBody();
+  tblFooter();
 
-  console.log(newStoreName, newStoreMinCust, newStoreMaxCust, newStoreAvgCook);
+  event.target.name.value = 0;
+  event.target.minCustPerHour.value = 0;
+  event.target.maxCustPerHour.value = 0;
+  event.target.avgCookiesSoldPerHour.value = 0;
+
+  storeform.innerHTML = '';
 }
-var submitButton = document.getElementById('submitButton').addEventListener('click', useFormHandler);
-submitButton;
 
-// console.log(headerRow);
-// console.log(tblBody);
+form.addEventListener('submit', form);
+
+console.log(headerRow);
+console.log(tblBody);
