@@ -3,7 +3,6 @@
 
 var hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 var alllocations = [];
-// var netTotal = 0
 
 // Create Object Constructors
 
@@ -53,10 +52,12 @@ MakeShop.prototype.calcTotalCookies = function () {
     console.log(this.totalCookies);
   }
 };
+
 // making the table
 // making the header
 function headerRow () {
   var cookieShops = document.getElementById('cookieShops');
+  cookieShops.innerHTML = '';
   var trEl = document.createElement('tr');
   var thEl = document.createElement('th');
   thEl.textContent = 'Locations';
@@ -126,39 +127,48 @@ headerRow();
 tblBody();
 tblFooter();
 
+function clearTable(){
+  for(var i = 0; i < alllocations.length; i++){
+    alllocations[i].totalCookies = 0;
+  }
+  var remove = document.getElementById('cookieShops');
+  remove.innerHTML = '';
+}
+
 //form
-var storeform = document.getElementById('storeform');
+var storeForm = document.getElementById('storeform');
+
 
 function form (event) {
   event.preventDefault();
-
   console.log(event);
   // key value pairs need match to constructor function key value
   // you are creating a new instance by using 'new' of your constructor function
   var newName = event.target.name.value;
-  var newMinCustPerHour = parseInt(event.target.minCustPerHour.value);
-  var newMaxCustPerHour = parseInt(event.target.maxCustPerHour.value);
-  var newAvgCookiesSoldPerHour = parseInt(event.target.avgCookiesSoldPerHour.value);
+  var newMinCustPerHour = Number(event.target.minCustPerHour.value);
+  var newMaxCustPerHour = Number(event.target.maxCustPerHour.value);
+  var newAvgCookiesSoldPerHour = Number(event.target.avgCookiesSoldPerHour.value);
+
 
   new MakeShop(newName, newMinCustPerHour, newMaxCustPerHour, newAvgCookiesSoldPerHour);
 
+  clearTable();
   headerRow();
   tblBody();
   tblFooter();
+
 
   event.target.name.value = null;
   event.target.minCustPerHour.value = null;
   event.target.maxCustPerHour.value = null;
   event.target.avgCookiesSoldPerHour.value = null;
 
-  storeform.innerHTML = '';
 
-  if(!event.target.name.value || !event.target.minCustPerHour.value || !event.target.maxCustPerHour.value || !event.target.avgCookiesSoldPerHour.value);
-  return alert('Fields cannot be empty');
+  // storeForm.innerHTML = '';
 }
-// newStoreform.addEventListener('submit', form);
 
-storeform.addEventListener('submit', form);
+// storeform.innerHTML = '';
+storeForm.addEventListener('submit', form);
 
 console.log(headerRow);
 console.log(tblBody);
