@@ -102,13 +102,24 @@ function tblFooter () {
   var cookieShops = document.getElementById('cookieShops');
   var trEl = document.createElement('tr');
   var tdEl = document.createElement('td');
-  trEl.textContent = 'Total';
+  tdEl.textContent = 'Total';
+  cookieShops.appendChild(trEl);
+  trEl.appendChild(tdEl);
+  var totalTotal = 0;
   for (var m = 0; m < hours.length; m++) {
-    alllocations[m].calcTotalCookies[m];
+    // alllocations[m].totalCookies[m];
+    var hourlyTotal = 0;
+    for(var n = 0; n < alllocations.length; n++){
+      hourlyTotal += alllocations[n].cookiesSoldByHour[m];
+    }
+    totalTotal += hourlyTotal;
     tdEl = document.createElement('td');
-    tdEl.textContent = alllocations[m].totalCookies[m];
+    tdEl.textContent = hourlyTotal;
     trEl.appendChild(tdEl);
   }
+  tdEl = document.createElement('td');
+  tdEl.textContent = totalTotal;
+  trEl.appendChild(tdEl);
   cookieShops.appendChild(trEl);
 }
 headerRow();
@@ -116,40 +127,38 @@ tblBody();
 tblFooter();
 
 //form
-var newStoreForm = document.getElementById('store-form');
+var storeform = document.getElementById('storeform');
 
 function form (event) {
-  var storeform = document.getElementById('storeform');
   event.preventDefault();
-  // add negstive input rules later :)
 
   console.log(event);
   // key value pairs need match to constructor function key value
   // you are creating a new instance by using 'new' of your constructor function
   var newName = event.target.name.value;
-  var newMinCustPerHour = Number(event.target.minCustPerHour.value);
-  var newMaxCustPerHour = Number(event.target.maxCustPerHour.value);
-  var newAvgCookiesSoldPerHour = Number(event.target.avgCookiesSoldPerHour.value);
+  var newMinCustPerHour = parseInt(event.target.minCustPerHour.value);
+  var newMaxCustPerHour = parseInt(event.target.maxCustPerHour.value);
+  var newAvgCookiesSoldPerHour = parseInt(event.target.avgCookiesSoldPerHour.value);
 
   new MakeShop(newName, newMinCustPerHour, newMaxCustPerHour, newAvgCookiesSoldPerHour);
-
 
   headerRow();
   tblBody();
   tblFooter();
 
-  event.target.name.value = 0;
-  event.target.minCustPerHour.value = 0;
-  event.target.maxCustPerHour.value = 0;
-  event.target.avgCookiesSoldPerHour.value = 0;
+  event.target.name.value = null;
+  event.target.minCustPerHour.value = null;
+  event.target.maxCustPerHour.value = null;
+  event.target.avgCookiesSoldPerHour.value = null;
 
   storeform.innerHTML = '';
+
+  if(!event.target.name.value || !event.target.minCustPerHour.value || !event.target.maxCustPerHour.value || !event.target.avgCookiesSoldPerHour.value);
+  return alert('Fields cannot be empty');
 }
+// newStoreform.addEventListener('submit', form);
 
-form.addEventListener('submit', form);
-
-
-newStoreForm.addEventListener('submit', newStoreForm);
+storeform.addEventListener('submit', form);
 
 console.log(headerRow);
 console.log(tblBody);
