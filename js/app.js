@@ -142,8 +142,13 @@ var storeForm = document.getElementById('storeform');
 function form (event) {
   event.preventDefault();
   console.log(event);
-  // key value pairs need match to constructor function key value
+
+  if(!event.target.name.value || !event.target.minCustPerHour.value || !event.target.maxCustPerHour.value || !event.target.avgCookiesSoldPerHour.value)
+    alert('Fields cannot be empty');
+
+    // key value pairs need match to constructor function key value
   // you are creating a new instance by using 'new' of your constructor function
+
   var newName = event.target.name.value;
   var newMinCustPerHour = Number(event.target.minCustPerHour.value);
   var newMaxCustPerHour = Number(event.target.maxCustPerHour.value);
